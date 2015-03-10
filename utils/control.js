@@ -1,7 +1,7 @@
 ////////////  /utils/control.js
+require('./to-title-case.js');
 var cfg = require('../config/index');
 var command = require('./command');
-
 var specialStack = [];
 var dieBuilder = [];
 
@@ -12,7 +12,13 @@ var recurseRoll = function(client, to, stack) {
   }
 };
 
-
+var getCard = function(client, from, message) {
+  var cardName = message.match(/<([a-z]| |[',])*>/i)[0];
+  cardName = cardName.toTitleCase();
+  console.log(cardName);
+  cardName = cardName.replace(/(<|>)/gi,"");
+  command.getCard(client, cfg.room, cardName); 
+};
 
 var listProfiles = function(client, from, message){
   command.profileList(client, from);
@@ -114,7 +120,7 @@ var rollSpecial = function(client, from, message){
   else{
     sDie = params[1];
     //console.log(client+"\n"+ to+"\n"+ sDie+"\n");
-    command.rollSpecial(client, to, sDie, function(err, record) {});
+    command.rollSpecial(client, to, from, sDie, function(err, record) {});
     
   }
 };
@@ -214,6 +220,7 @@ var multiRoll = function(client, from, message){
 
 
 var control = {
+  getCard: getCard,
   listProfiles: listProfiles,
   setProfile: setProfile,
   showStats: showStats,

@@ -8,7 +8,7 @@ config.defaultRoom = "#";
 config.server = "irc.freenode.com";
 config.nick = "|Bot|";
 config.ac = false;
-
+config.idString = "identify password";
 
 //OP STATUS
 config.ops = {"count":0};

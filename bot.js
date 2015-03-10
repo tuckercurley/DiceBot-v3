@@ -18,8 +18,8 @@ text = cfg.txt;
     });
     
     client.connect(function(){ 
-    client.say('nickserv', '/mode '+cfg.nick+' +B');
-    client.say("nickserv", "identify tinabotfgtbag");
+    client.send('MODE', cfg.nick, '+B');
+    client.say("nickserv", cfg.idString);
     });
     
 /********************
@@ -114,6 +114,7 @@ var sudoCmmds = function(client, from, to, message){
 client.addListener('message', function (from, to, message) {
   //console.log(from + " => " + to + ":::" + message);
   
+  message = message.replace(/[\u2018\u2019]/g, "'");
   
   matcher(client, from, message);
   

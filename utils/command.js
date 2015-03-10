@@ -1,6 +1,7 @@
 //////////////////////////     /utils/command.js
 
-var  listDice = require('./command/listDice'),
+var   getCard = require('./command/getCard');
+     listDice = require('./command/listDice'),
      sanitize = require('./command/sanitize'),
     setRecord = require('./command/setRecord'),
     getRecord = require('./command/getRecord'),
@@ -9,17 +10,18 @@ var  listDice = require('./command/listDice'),
   profileList = require('./command/profileList'),
   rollSpecial = require('./command/rollSpecial');
 statsToString = require('./command/statsToString');
- 
+
 
 var command = {
-  profileList: profileList,
+  getCard: getCard,
+  listDice: listDice,
+  sanitize: sanitize,
+  rollDice: diceRoller,
   getRecord: getRecord, 
   setRecord: setRecord,
-  rollDice: diceRoller,
-  sanitize: sanitize,
-  rollSpecial: rollSpecial,
   setSpecial: setSpecial,
-  listDice: listDice,
+  profileList: profileList,
+  rollSpecial: rollSpecial,
   statsToString: statsToString
 };
 

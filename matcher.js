@@ -4,7 +4,10 @@ var cfg = require('./config/index');
 
 var matcher = function(client, from, message){
 
+  if(/<([a-z]|[',]| )*>/gi.test(message)){ control.getCard(client, from, message); }
+  
   if(/^!list/i.test(message)){ control.listProfiles(client, from, message); }
+  
   
   if(/^!desc/i.test(message)){ control.viewProfile(client, from, message); }
   if(/^!!desc/i.test(message)){ control.setProfile(client, from, message); }
