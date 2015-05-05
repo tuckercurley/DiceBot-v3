@@ -7,6 +7,7 @@ var matcher = function(client, from, message){
   if(/<([a-z]|[',]| )*>/gi.test(message)){ control.getCard(client, from, message); }
   
   if(/^!list/i.test(message)){ control.listProfiles(client, from, message); }
+  if(/^!version/i.test(message)){ control.mtgVersion(client, from, message); }
   
   
   if(/^!desc/i.test(message)){ control.viewProfile(client, from, message); }

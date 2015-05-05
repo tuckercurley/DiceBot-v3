@@ -2,9 +2,13 @@
 require('./to-title-case.js');
 var cfg = require('../config/index');
 var command = require('./command');
+var mtgDate = require('./command/changelog.json');
 var specialStack = [];
 var dieBuilder = [];
 
+var mtgVersion = function(client, from, message) {
+  client.say(from, mtgDate[0].when);
+}
 
 var recurseRoll = function(client, to, stack) {
   if(stack.length > 0){
@@ -238,7 +242,8 @@ var control = {
   buildDie: buildDie,
   dumpDie: dumpDie,
   endSudo: endSudo,
-  multiRoll: multiRoll
+  multiRoll: multiRoll,
+  mtgVersion: mtgVersion
 };
 
 module.exports = control;

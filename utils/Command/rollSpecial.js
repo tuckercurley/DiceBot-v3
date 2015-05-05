@@ -3,7 +3,7 @@ var cfg = require('../../config/index');
 var db = cfg.dice;
 
 
-var rollSpecial = function(client, to, target, callback){
+var rollSpecial = function(client, to, from, sDie, callback){
 
   var workhorse = function(err, record){
     
@@ -18,7 +18,7 @@ var rollSpecial = function(client, to, target, callback){
       }
 
       var roll = Math.floor((Math.random() * totalSides))+1;
-      console.log("Rolled Special Die \""+target+" - "+roll);
+      console.log("Rolled Special Die \""+sDie+" - "+roll);
       
       for (i=0;i<record.sides.length;i++){
         roll -= record.sides[i].numSides
@@ -31,7 +31,7 @@ var rollSpecial = function(client, to, target, callback){
   };
 
   
-  db.findOne({"name" : target}, workhorse);
+  db.findOne({"name" : sDie}, workhorse);
   
 };
 
